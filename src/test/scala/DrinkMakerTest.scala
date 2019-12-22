@@ -56,4 +56,11 @@ class DrinkMakerTest extends FunSuite {
     assert(drink.sugarCount == 1)
     assert(drink.includeStick)
   }
+
+  test("Make drink extra hot") {
+    val drink = DrinkMaker("H", 1, 0.5, true)
+
+    assert(drink.extraHot)
+  }
+
 }

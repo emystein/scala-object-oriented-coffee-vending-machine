@@ -3,8 +3,26 @@ import org.scalatest.FunSuite
 import org.scalatest.Matchers._
 
 class MoneyChargeTest extends FunSuite {
-  test("Make drink when correct amount is deposited") {
+  test("Make Coffee when correct amount is deposited") {
     val drink = DrinkMaker("C", 1, 0.6)
+
+    assert(drink != null)
+  }
+
+  test("Make Tea when correct amount is deposited") {
+    val drink = DrinkMaker("T", 1, 0.4)
+
+    assert(drink != null)
+  }
+
+  test("Make Chocolate when correct amount is deposited") {
+    val drink = DrinkMaker("T", 1, 0.5)
+
+    assert(drink != null)
+  }
+
+  test("Make Orange Juice when correct amount is deposited") {
+    val drink = DrinkMaker("O", 0, 0.6)
 
     assert(drink != null)
   }

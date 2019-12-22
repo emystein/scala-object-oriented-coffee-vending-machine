@@ -4,6 +4,7 @@ object DrinkMaker {
       case "T" => Drink("Tea", sugarCount)
       case "C" => Drink("Coffee", sugarCount)
       case "H" => Drink("Chocolate", sugarCount)
+      case "O" => Drink("Orange Juice", sugarCount)
     }
 
     val listPrice = DrinkPriceList.priceOf(drink.flavor)

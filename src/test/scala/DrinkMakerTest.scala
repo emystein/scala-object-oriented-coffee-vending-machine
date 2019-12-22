@@ -18,7 +18,13 @@ class DrinkMakerTest extends FunSuite {
 
     assert(drink.flavor == "Chocolate")
   }
-    
+
+  test("Make Orange Juice") {
+    val drink = DrinkMaker("O", 0, 0.6)
+
+    assert(drink.flavor == "Orange Juice")
+  }
+
   test("Make drink without sugar") {
     val drink = DrinkMaker("H", 0, 0.5)
 

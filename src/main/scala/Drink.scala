@@ -16,6 +16,6 @@ object DrinkMaker {
 }
 
 case class Drink(flavor: String, sugarCount: Int) {
-  val includeStick = sugarCount > 0
+  val includeStick: Boolean = sugarCount > 0
 }
 

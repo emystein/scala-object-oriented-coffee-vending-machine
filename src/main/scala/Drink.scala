@@ -1,5 +1,7 @@
 object DrinkMaker {
-  def apply(flavorCode: String, sugarCount: Int = 0, amountGiven: Double, extraHot: Boolean = false): Drink = {
+  val drinkMakeObservers: List[DrinkMakeObserver] = List(new StatsRecordDrinkMakeObserver)
+
+  def apply(flavorCode: String, sugarCount: Int = 0, amountPaid: Double, extraHot: Boolean = false): Drink = {
     val drink = flavorCode match {
       case "T" => Drink("Tea", sugarCount, extraHot)
       case "C" => Drink("Coffee", sugarCount, extraHot)
@@ -9,8 +11,10 @@ object DrinkMaker {
 
     val listPrice = DrinkPriceList.priceOf(drink.flavor)
 
-    if (amountGiven < listPrice)
-     throw AmountNotSufficientException(amountGiven)
+    if (amountPaid < listPrice)
+     throw AmountNotSufficientException(amountPaid)
+
+    drinkMakeObservers.foreach(_(drink, listPrice))
 
     drink
   }

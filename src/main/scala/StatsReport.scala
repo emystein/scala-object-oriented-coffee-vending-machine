@@ -1,4 +1,3 @@
-case class StatsReport(items: List[StatItem]) {
-
-
+case class StatsReport(items: List[DrinkStat]) {
+  def totalSalesAmount = items.map(_.salesAmount).sum
 }

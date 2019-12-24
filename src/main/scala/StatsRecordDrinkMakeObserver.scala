@@ -1,7 +1,5 @@
-class StatsRecordDrinkMakeObserver extends DrinkMakeObserver {
-  SalesStats.clear
-
+class StatsRecordDrinkMakeObserver(salesStats: SalesStats) extends DrinkMakeObserver {
   override def apply(drink: Drink, listPrice: Double): Unit = {
-    SalesStats.add(drink, listPrice)
+    salesStats.add(drink, listPrice)
   }
 }

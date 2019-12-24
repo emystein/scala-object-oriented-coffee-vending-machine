@@ -1,6 +1,6 @@
 import scala.collection.mutable
 
-object SalesStats {
+class SalesStats {
   var salesSumByFlavor: mutable.Map[String, DrinkStat] = mutable.HashMap()
 
   def clear = salesSumByFlavor.clear

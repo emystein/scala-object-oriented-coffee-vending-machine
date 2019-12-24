@@ -1,8 +1,10 @@
-import org.scalatest.FunSuite
+import org.scalatest.{BeforeAndAfterEach, FunSuite}
 
-class SalesStatsTest extends FunSuite {
+class SalesStatsTest extends FunSuite with BeforeAndAfterEach {
   test("Group drink sales") {
-    SalesStats.clear
+    val salesStats = new SalesStats
+
+    implicit val drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats))
 
     val coffee1 = DrinkMaker("C", 0, 0.6)
     val coffee2 = DrinkMaker("C", 0, 0.6)
@@ -11,7 +13,7 @@ class SalesStatsTest extends FunSuite {
     val chocolate1 = DrinkMaker("H", 0, 0.5)
     val chocolate2 = DrinkMaker("H", 0, 0.5)
 
-    val report = SalesStats.currentStats
+    val report = salesStats.currentStats
 
     val statItem = report.items.filter(item => item.flavor == "Coffee").head
     assert(statItem.salesCount == 2)
@@ -27,13 +29,15 @@ class SalesStatsTest extends FunSuite {
   }
 
   test("Total sales amount") {
-    SalesStats.clear
+    val salesStats = new SalesStats
+
+    implicit val drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats))
 
     val coffee1 = DrinkMaker("C", 0, 0.6)
     val tea1 = DrinkMaker("T", 0, 0.4)
     val chocolate1 = DrinkMaker("H", 0, 0.5)
 
-    val report = SalesStats.currentStats
+    val report = salesStats.currentStats
 
     assert(report.totalSalesAmount == 1.5)
   }

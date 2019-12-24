@@ -1,7 +1,5 @@
 object DrinkMaker {
-  val drinkMakeObservers: List[DrinkMakeObserver] = List(new StatsRecordDrinkMakeObserver)
-
-  def apply(flavorCode: String, sugarCount: Int = 0, amountPaid: Double, extraHot: Boolean = false): Drink = {
+  def apply(flavorCode: String, sugarCount: Int = 0, amountPaid: Double, extraHot: Boolean = false)(implicit drinkMakeObservers: List[DrinkMakeObserver] = List()): Drink = {
     val drink = flavorCode match {
       case "T" => Drink("Tea", sugarCount, extraHot)
       case "C" => Drink("Coffee", sugarCount, extraHot)

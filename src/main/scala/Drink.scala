@@ -1,14 +1,14 @@
 object DrinkMaker {
+  val drinkPreparationByFlavorCode = Map("T" -> new TeaPreparation, "C" -> new CoffeePreparation, "H" -> new ChocolatePreparation, "O" -> new OrangeJuicePreparation)
+
   def apply(flavorCode: String, sugarCount: Int = 0, amountPaid: Double, extraHot: Boolean = false)
            (implicit drinkMakeObservers: List[DrinkMakeObserver] = List(),
             beverageQuantityChecker: BeverageQuantityChecker = null,
             emailNotifier: EmailNotifier = null): Drink = {
-    val drink = flavorCode match {
-      case "T" => Drink("Tea", sugarCount, extraHot)
-      case "C" => Drink("Coffee", sugarCount, extraHot)
-      case "H" => Drink("Chocolate", sugarCount, extraHot)
-      case "O" => Drink("Orange Juice", sugarCount, extraHot)
-    }
+
+    val drinkPreparation = drinkPreparationByFlavorCode(flavorCode)
+
+    val drink = drinkPreparation.execute(sugarCount, extraHot)
 
     if (beverageQuantityChecker != null && beverageQuantityChecker.isEmpty(drink.flavor))
       emailNotifier.notifyMissingDrink(drink.flavor)

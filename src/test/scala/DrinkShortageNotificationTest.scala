@@ -11,7 +11,7 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     (emailNotifierMock.notifyMissingDrink _).expects("Coffee")
 
-    val drink = DrinkMaker("C", 0, 0.6)
+    DrinkMaker("C", 0, 0.6)
   }
 
   test("Drink available should not notify shortage via e-mail") {
@@ -19,6 +19,6 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     (beverageQuantityCheckerMock.isEmpty _) when("Coffee") returns(false)
 
-    val drink = DrinkMaker("C", 0, 0.6)
+    DrinkMaker("C", 0, 0.6)
   }
 }

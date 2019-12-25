@@ -1,10 +1,3 @@
-trait DrinkOrder {
-  val flavor: String
-  val sugarCount: Int
+case class DrinkOrder(flavor: String, sugarCount: Int, temperature: Temperature = NormalTemperature()) {
   def includeStick: Boolean = sugarCount > 0
 }
-
-case class NormalTemperatureDrinkOrder(flavor: String, sugarCount: Int) extends DrinkOrder
-
-case class ExtraHotDrinkOrder(val flavor: String, val sugarCount: Int) extends DrinkOrder
-

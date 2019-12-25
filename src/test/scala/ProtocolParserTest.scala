@@ -42,7 +42,7 @@ class ProtocolParserTest extends FunSuite {
   test("Parse extra hot drink command") {
     val parsedOrder = parser.parse("Th:1:0")
 
-    assert(parsedOrder.isInstanceOf[ExtraHotDrinkOrder])
+    assert(parsedOrder.temperature.isInstanceOf[ExtraHotTemperature])
   }
 
 }

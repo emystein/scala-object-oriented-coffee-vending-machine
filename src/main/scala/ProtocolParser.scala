@@ -13,8 +13,8 @@ class ProtocolParser() {
     val extraHotPattern = "(.h)".r
 
     splitCommand(0) match {
-      case extraHotPattern(_) => ExtraHotDrinkOrder(flavor, sugarCount)
-      case _ => NormalTemperatureDrinkOrder(flavor, sugarCount)
+      case extraHotPattern(_) => DrinkOrder(flavor, sugarCount, ExtraHotTemperature())
+      case _ => DrinkOrder(flavor, sugarCount, NormalTemperature())
     }
   }
 }

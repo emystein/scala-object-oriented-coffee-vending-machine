@@ -1,3 +1,3 @@
 trait DrinkMakeObserver {
-  def apply(drink: Drink, listPrice: Double)
+  def apply(drink: Drink)
 }

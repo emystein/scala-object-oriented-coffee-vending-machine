@@ -1,14 +1,14 @@
 object DrinkMaker {
-  def apply(flavor: String, sugarCount: Int = 0, amountPaid: Double, temperature: Temperature = NormalTemperature())
+  def apply(order: DrinkOrder, amountPaid: Double)
            (implicit drinkMakePreconditions: List[DrinkMakePrecondition] = List(),
             drinkMakeObservers: List[DrinkMakeObserver] = List()): Drink = {
 
-    drinkMakePreconditions.foreach(_ (flavor))
+    drinkMakePreconditions.foreach(_ (order.flavor))
 
     val drink = DrinkBuilder
-      .withFlavor(flavor)
-      .sugar(sugarCount)
-      .temperature(temperature)
+      .withFlavor(order.flavor)
+      .sugar(order.sugarCount)
+      .temperature(order.temperature)
       .build
 
     Cashier.charge(drink.flavor, amountPaid)
@@ -22,4 +22,3 @@ object DrinkMaker {
 case class Drink(flavor: String, sugarCount: Int, temperature: Temperature) {
   val includeStick: Boolean = sugarCount > 0
 }
-

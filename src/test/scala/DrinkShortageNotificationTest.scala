@@ -11,7 +11,7 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     (emailNotifierMock.notifyMissingDrink _).expects("Coffee")
 
-    DrinkMaker("Coffee", 0, 0.6)(drinkMakePreconditions = List(new BeverageQuantityPrecondition()))
+    DrinkMaker(DrinkOrder("Coffee", 0), 0.6)(drinkMakePreconditions = List(new BeverageQuantityPrecondition()))
   }
 
   test("Drink available should not notify shortage via e-mail") {
@@ -21,6 +21,6 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     implicit val emailNotifierMock = mock[EmailNotifier]
 
-    DrinkMaker("Coffee", 0, 0.6)(drinkMakePreconditions = List(new BeverageQuantityPrecondition()))
+    DrinkMaker(DrinkOrder("Coffee", 0), 0.6)(drinkMakePreconditions = List(new BeverageQuantityPrecondition()))
   }
 }

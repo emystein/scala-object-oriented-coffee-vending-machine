@@ -1,9 +1,8 @@
-class BeverageQuantityPrecondition(implicit beverageQuantityChecker: BeverageQuantityChecker = null,
-                                   emailNotifier: EmailNotifier = null)
+class BeverageQuantityPrecondition(implicit beverageQuantityChecker: BeverageQuantityChecker, emailNotifier: EmailNotifier)
   extends DrinkMakePrecondition {
 
   def apply(flavor: String): Unit = {
-    if (beverageQuantityChecker != null && beverageQuantityChecker.isEmpty(flavor))
+    if (beverageQuantityChecker.isEmpty(flavor))
       emailNotifier.notifyMissingDrink(flavor)
   }
 }

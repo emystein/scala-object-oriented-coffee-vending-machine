@@ -19,6 +19,8 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     (beverageQuantityCheckerMock.isEmpty _) when("Coffee") returns(false)
 
+    implicit val emailNotifierMock = mock[EmailNotifier]
+
     DrinkMaker("Coffee", 0, 0.6)(drinkMakePreconditions = List(new BeverageQuantityPrecondition()))
   }
 }

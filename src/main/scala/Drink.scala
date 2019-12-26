@@ -1,7 +1,7 @@
 object DrinkMaker {
   val drinkPreparationByFlavor = Map("Tea" -> new TeaPreparation, "Coffee" -> new CoffeePreparation, "Chocolate" -> new ChocolatePreparation, "Orange Juice" -> new OrangeJuicePreparation)
 
-  def apply(flavor: String, sugarCount: Int = 0, amountPaid: Double, extraHot: Boolean = false)
+  def apply(flavor: String, sugarCount: Int = 0, amountPaid: Double, temperature: Temperature = NormalTemperature())
            (implicit drinkMakePreconditions: List[DrinkMakePrecondition] = List(),
             drinkMakeObservers: List[DrinkMakeObserver] = List()): Drink = {
 
@@ -9,7 +9,7 @@ object DrinkMaker {
 
     val drinkPreparation = drinkPreparationByFlavor(flavor)
 
-    val drink = drinkPreparation.execute(sugarCount, extraHot)
+    val drink = drinkPreparation.execute(sugarCount, temperature)
 
     Cashier.charge(drink.flavor, amountPaid)
 
@@ -19,7 +19,7 @@ object DrinkMaker {
   }
 }
 
-case class Drink(flavor: String, sugarCount: Int, extraHot: Boolean) {
+case class Drink(flavor: String, sugarCount: Int, temperature: Temperature) {
   val includeStick: Boolean = sugarCount > 0
 }
 

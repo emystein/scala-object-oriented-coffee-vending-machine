@@ -6,5 +6,4 @@ class BeverageQuantityPrecondition(implicit beverageQuantityChecker: BeverageQua
     if (beverageQuantityChecker != null && beverageQuantityChecker.isEmpty(flavor))
       emailNotifier.notifyMissingDrink(flavor)
   }
-
 }

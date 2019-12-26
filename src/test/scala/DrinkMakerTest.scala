@@ -58,9 +58,9 @@ class DrinkMakerTest extends FunSuite {
   }
 
   test("Make drink extra hot") {
-    val drink = DrinkMaker("Chocolate", 1, 0.5, true)
+    val drink = DrinkMaker("Chocolate", 1, 0.5, temperature = ExtraHotTemperature())
 
-    assert(drink.extraHot)
+    assert(drink.temperature.isInstanceOf[ExtraHotTemperature])
   }
 
 }

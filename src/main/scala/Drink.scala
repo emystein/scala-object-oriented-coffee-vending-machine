@@ -1,15 +1,15 @@
 object DrinkMaker {
-  val drinkPreparationByFlavor = Map("Tea" -> new TeaPreparation, "Coffee" -> new CoffeePreparation, "Chocolate" -> new ChocolatePreparation, "Orange Juice" -> new OrangeJuicePreparation)
-
   def apply(flavor: String, sugarCount: Int = 0, amountPaid: Double, temperature: Temperature = NormalTemperature())
            (implicit drinkMakePreconditions: List[DrinkMakePrecondition] = List(),
             drinkMakeObservers: List[DrinkMakeObserver] = List()): Drink = {
 
     drinkMakePreconditions.foreach(_ (flavor))
 
-    val drinkPreparation = drinkPreparationByFlavor(flavor)
-
-    val drink = drinkPreparation.execute(sugarCount, temperature)
+    val drink = DrinkBuilder
+      .withFlavor(flavor)
+      .sugar(sugarCount)
+      .temperature(temperature)
+      .build
 
     Cashier.charge(drink.flavor, amountPaid)
 

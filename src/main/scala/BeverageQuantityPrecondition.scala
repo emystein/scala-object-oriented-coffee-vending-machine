@@ -1,4 +1,4 @@
-class BeverageQuantityPrecondition(implicit beverageQuantityChecker: BeverageQuantityChecker, emailNotifier: EmailNotifier)
+class BeverageQuantityPrecondition(beverageQuantityChecker: BeverageQuantityChecker, emailNotifier: EmailNotifier)
   extends DrinkMakePrecondition {
 
   def apply(flavor: String): Unit = {

@@ -4,14 +4,14 @@ class SalesStatsTest extends FunSuite with BeforeAndAfterEach {
   test("Group drink sales") {
     val salesStats = new SalesStats
 
-    implicit val drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats))
+    val drinkMaker = new DrinkMaker(drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats)))
 
-    val coffee1 = DrinkMaker(DrinkOrder("Coffee", 0), 0.6)
-    val coffee2 = DrinkMaker(DrinkOrder("Coffee", 0), 0.6)
-    val tea1 = DrinkMaker(DrinkOrder("Tea", 0), 0.4)
-    val tea2 = DrinkMaker(DrinkOrder("Tea", 0), 0.4)
-    val chocolate1 = DrinkMaker(DrinkOrder("Chocolate", 0), 0.5)
-    val chocolate2 = DrinkMaker(DrinkOrder("Chocolate", 0), 0.5)
+    val coffee1 = drinkMaker.prepare(DrinkOrder("Coffee", 0), 0.6)
+    val coffee2 = drinkMaker.prepare(DrinkOrder("Coffee", 0), 0.6)
+    val tea1 = drinkMaker.prepare(DrinkOrder("Tea", 0), 0.4)
+    val tea2 = drinkMaker.prepare(DrinkOrder("Tea", 0), 0.4)
+    val chocolate1 = drinkMaker.prepare(DrinkOrder("Chocolate", 0), 0.5)
+    val chocolate2 = drinkMaker.prepare(DrinkOrder("Chocolate", 0), 0.5)
 
     val report = salesStats.currentStats
 
@@ -31,11 +31,11 @@ class SalesStatsTest extends FunSuite with BeforeAndAfterEach {
   test("Total sales amount") {
     val salesStats = new SalesStats
 
-    implicit val drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats))
+    val drinkMaker = new DrinkMaker(drinkMakeObservers = List(new StatsRecordDrinkMakeObserver(salesStats)))
 
-    val coffee1 = DrinkMaker(DrinkOrder("Coffee", 0), 0.6)
-    val tea1 = DrinkMaker(DrinkOrder("Tea", 0), 0.4)
-    val chocolate1 = DrinkMaker(DrinkOrder("Chocolate", 0), 0.5)
+    val coffee1 = drinkMaker.prepare(DrinkOrder("Coffee", 0), 0.6)
+    val tea1 = drinkMaker.prepare(DrinkOrder("Tea", 0), 0.4)
+    val chocolate1 = drinkMaker.prepare(DrinkOrder("Chocolate", 0), 0.5)
 
     val report = salesStats.currentStats
 

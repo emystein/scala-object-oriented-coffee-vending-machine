@@ -7,7 +7,7 @@ object DrinkMaker {
 
     Cashier.charge(order.flavor, amountPaid)
 
-    val drink = DrinkBuilder
+    val drink = DrinkMixer
       .withFlavor(order.flavor)
       .sugar(order.sugarCount)
       .temperature(order.temperature)

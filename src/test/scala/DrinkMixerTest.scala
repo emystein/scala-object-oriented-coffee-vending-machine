@@ -9,7 +9,7 @@ class DrinkMixerTest extends FunSuite {
   }
 
   test("Mix drink with 1 sugar") {
-    val drink = DrinkMixer.flavor("Tea").sugar(1).build
+    val drink = DrinkMixer.flavor("Tea").sugarCount(1).build
 
     assert(drink.sugarCount == 1)
   }
@@ -21,7 +21,7 @@ class DrinkMixerTest extends FunSuite {
   }
 
   test("Mix extra hot drink with 2 sugars") {
-    val drink = DrinkMixer.flavor("Tea").sugar(2).temperature(ExtraHotTemperature()).build
+    val drink = DrinkMixer.flavor("Tea").sugarCount(2).temperature(ExtraHotTemperature()).build
 
     assert(drink.sugarCount == 2)
     assert(drink.temperature.isInstanceOf[ExtraHotTemperature])

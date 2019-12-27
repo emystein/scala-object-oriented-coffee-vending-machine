@@ -6,7 +6,7 @@ class DrinkMaker(preconditions: List[DrinkMakePrecondition] = List(), drinkMakeO
 
     val drink = DrinkMixer
       .flavor(order.flavor)
-      .sugar(order.sugarCount)
+      .sugarCount(order.sugarCount)
       .temperature(order.temperature)
       .build
 

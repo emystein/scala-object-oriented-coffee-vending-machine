@@ -8,7 +8,7 @@ class DrinkMixer(flavor: String) {
   var sugar: Int = 0
   var temperature: Temperature = NormalTemperature()
 
-  def sugar(count: Int): DrinkMixer = {
+  def sugarCount(count: Int): DrinkMixer = {
     sugar = count
     this
   }

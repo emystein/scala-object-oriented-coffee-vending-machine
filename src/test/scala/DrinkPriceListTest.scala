@@ -12,4 +12,8 @@ class DrinkPriceListTest extends FunSuite {
   test("Charge 0.5 euro for Chocolate") {
     assert(DrinkPriceList.priceOf("Chocolate") == 0.5)
   }
+
+  test("Charge 0.6 euro for Orange Juice") {
+    assert(DrinkPriceList.priceOf("Orange Juice") == 0.6)
+  }
 }

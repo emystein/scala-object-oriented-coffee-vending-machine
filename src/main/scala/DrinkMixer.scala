@@ -1,5 +1,5 @@
 object DrinkMixer {
-  def withFlavor(flavor: String): DrinkMixer = {
+  def flavor(flavor: String): DrinkMixer = {
     new DrinkMixer(flavor)
   }
 }

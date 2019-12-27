@@ -2,10 +2,10 @@ class DrinkMaker(preconditions: List[DrinkMakePrecondition] = List(), drinkMakeO
   def prepare(order: DrinkOrder, amountPaid: Double): Cup = {
     preconditions.foreach(_ (order.flavor))
 
-  Cashier.charge(order.flavor, amountPaid)
+    Cashier.charge(order.flavor, amountPaid)
 
     val drink = DrinkMixer
-      .withFlavor(order.flavor)
+      .flavor(order.flavor)
       .sugar(order.sugarCount)
       .temperature(order.temperature)
       .build

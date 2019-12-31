@@ -1,9 +1,14 @@
+import com.google.common.base.Preconditions
+
 class VendingMachine(drinkMaker: DrinkMaker) {
   var credit: Double = 0
   var flavor: String = ""
   var sugarLevel: Int = 0
+  var temperature: Temperature = NormalTemperature()
 
   def addMoney(money: Double): VendingProcessResult = {
+    Preconditions.checkState(!flavor.isEmpty)
+
     credit += money
 
     val priceList = DrinkPriceList.priceOf(flavor)
@@ -19,5 +24,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
   def setFlavor(aFlavor: String): Unit = flavor = aFlavor
 
-  def setSugarLevel(value: Int): Unit = sugarLevel = value
+  def setSugarLevel(aNumber: Int): Unit = sugarLevel = aNumber
+
+  def setTemperature(aTemperature: Temperature) = temperature = aTemperature
 }

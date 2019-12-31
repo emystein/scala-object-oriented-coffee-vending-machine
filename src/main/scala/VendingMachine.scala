@@ -11,14 +11,13 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
     credit += money
 
-    val priceList = DrinkPriceList.priceOf(flavor)
-
     try {
       val change = Cashier.charge(flavor, credit)
       val cup = drinkMaker.prepare(DrinkOrder(flavor, sugarLevel), credit)
+      credit = 0
       CupAndChange(Some(cup), change)
     } catch {
-      case AmountNotSufficientException(amountGiven) => PendingAmountProcessResult(priceList - amountGiven)
+      case AmountNotSufficientException(amountGiven) => PendingAmountProcessResult(DrinkPriceList.priceOf(flavor) - amountGiven)
     }
   }
 
@@ -26,5 +25,5 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
   def setSugarLevel(aNumber: Int): Unit = sugarLevel = aNumber
 
-  def setTemperature(aTemperature: Temperature) = temperature = aTemperature
+  def setTemperature(aTemperature: Temperature): Unit = temperature = aTemperature
 }

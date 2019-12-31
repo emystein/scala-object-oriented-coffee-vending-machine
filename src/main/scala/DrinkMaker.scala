@@ -1,5 +1,5 @@
 class DrinkMaker(preconditions: List[DrinkMakePrecondition] = List(), drinkMakeObservers: List[DrinkMakeObserver] = List()) {
-  def prepare(order: DrinkOrder, amountPaid: Double): Cup = {
+  def prepare(order: DrinkOrder): Cup = {
     preconditions.foreach(_ (order.flavor))
 
     val drink = DrinkMixer

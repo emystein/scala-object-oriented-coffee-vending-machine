@@ -9,7 +9,7 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
   test("Drink available should not notify shortage via e-mail") {
     (flavorQuantityChecker.isEmpty _) when("Coffee") returns(false)
 
-    drinkMaker.prepare(DrinkOrder("Coffee", 0), 0.6)
+    drinkMaker.prepare(DrinkOrder("Coffee", 0))
   }
 
   test("Drink shortage should be notified via e-mail") {
@@ -17,6 +17,6 @@ class DrinkShortageNotificationTest extends FunSuite with MockFactory {
 
     (emailNotifier.notifyMissingDrink _).expects("Coffee")
 
-    drinkMaker.prepare(DrinkOrder("Coffee", 0), 0.6)
+    drinkMaker.prepare(DrinkOrder("Coffee", 0))
   }
 }

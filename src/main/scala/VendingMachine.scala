@@ -13,8 +13,8 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
     try {
       val change = Cashier.charge(flavor, credit)
-      val cup = drinkMaker.prepare(DrinkOrder(flavor, sugarLevel), credit)
       credit = 0
+      val cup = drinkMaker.prepare(DrinkOrder(flavor, sugarLevel))
       CupAndChange(Some(cup), change)
     } catch {
       case AmountNotSufficientException(amountGiven) => PendingAmountProcessResult(DrinkPriceList.priceOf(flavor) - amountGiven)

@@ -1,0 +1,3 @@
+package machine
+
+trait VendingProcessResult

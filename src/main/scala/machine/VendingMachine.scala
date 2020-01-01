@@ -10,7 +10,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
   var credit: Double = 0
 
-  def addMoney(money: Double): VendingProcessResult = {
+  def addMoney(money: Double): PreparationResult = {
     Preconditions.checkState(!flavor.isEmpty)
 
     credit += money
@@ -21,7 +21,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
       val cup = drinkMaker.prepare(DrinkOrder(flavor, sugarLevel))
       CupAndChange(Some(cup), change)
     } catch {
-      case AmountNotSufficientException(amountGiven) => PendingAmountProcessResult(DrinkPriceList.priceOf(flavor) - amountGiven)
+      case AmountNotSufficientException(amountGiven) => RemainingAmount(DrinkPriceList.priceOf(flavor) - amountGiven)
     }
   }
 }

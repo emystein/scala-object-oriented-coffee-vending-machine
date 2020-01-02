@@ -1,5 +1,6 @@
-package machine
+package machine.preparation
 
+import machine.DrinkOrder
 import money.DrinkPriceList
 import org.scalatest.FunSuite
 

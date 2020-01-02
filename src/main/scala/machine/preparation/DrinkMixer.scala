@@ -1,4 +1,6 @@
-package machine
+package machine.preparation
+
+import machine.Drink
 
 object DrinkMixer {
   def flavor(flavor: String): DrinkMixer = {

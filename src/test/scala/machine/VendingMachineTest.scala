@@ -1,5 +1,6 @@
 package machine
 
+import machine.preparation.{CupAndChange, DrinkMaker, NormalTemperature, RemainingAmount}
 import money.DrinkPriceList
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 

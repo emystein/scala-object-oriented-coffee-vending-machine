@@ -1,6 +1,7 @@
 package stats
 
-import machine.{DrinkMaker, DrinkOrder}
+import machine.DrinkOrder
+import machine.preparation.DrinkMaker
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
 
 class SalesStatsTest extends FunSuite with BeforeAndAfterEach {

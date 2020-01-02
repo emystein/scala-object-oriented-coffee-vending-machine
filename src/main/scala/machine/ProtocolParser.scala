@@ -1,5 +1,7 @@
 package machine
 
+import machine.preparation.{ExtraHotTemperature, NormalTemperature}
+
 class ProtocolParser() {
   val drinkFlavorByCode = Map('T' -> "Tea", 'C' -> "Coffee", 'H' -> "Chocolate", 'O' -> "Orange Juice")
 

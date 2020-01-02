@@ -1,4 +1,7 @@
-package machine
+package machine.preparation
+
+import machine.preparation.preconditions.DrinkMakePrecondition
+import machine.{Cup, DrinkOrder}
 
 class DrinkMaker(preconditions: List[DrinkMakePrecondition] = List(), drinkMakeObservers: List[DrinkMakeObserver] = List()) {
   def prepare(order: DrinkOrder): Cup = {

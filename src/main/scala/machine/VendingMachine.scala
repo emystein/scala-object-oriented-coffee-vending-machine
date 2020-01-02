@@ -1,6 +1,7 @@
 package machine
 
 import com.google.common.base.Preconditions
+import machine.preparation.{CupAndChange, DrinkMaker, NormalTemperature, PreparationResult, RemainingAmount, Temperature}
 import money.{AmountNotSufficientException, CashRegister, Cashier}
 
 class VendingMachine(drinkMaker: DrinkMaker) {

@@ -1,5 +1,7 @@
-package machine
+package machine.preparation.preconditions
 
+import machine.preparation.DrinkMaker
+import machine.{DrinkOrder, EmailNotifier}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.FunSuite
 

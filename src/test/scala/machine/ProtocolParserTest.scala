@@ -1,5 +1,6 @@
 package machine
 
+import machine.preparation.ExtraHotTemperature
 import org.scalatest.FunSuite
 
 class ProtocolParserTest extends FunSuite {

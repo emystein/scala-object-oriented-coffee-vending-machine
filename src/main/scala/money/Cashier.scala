@@ -1,14 +1,18 @@
 package money
 
-import scala.math.BigDecimal.RoundingMode
+class Cashier(cashRegister: CashRegister) {
+  def addCredit(value: Double): Unit = {
+    cashRegister.addCredit(value)
+  }
 
-object Cashier {
   def charge(flavor: String, amountPaid: Double): BigDecimal = {
     val listPrice = DrinkPriceList.priceOf(flavor)
 
     if (amountPaid < listPrice)
       throw AmountNotSufficientException(amountPaid)
 
-    BigDecimal(amountPaid - listPrice).setScale(1, RoundingMode.UP)
+    val change = cashRegister.charge(listPrice)
+
+    change
   }
 }

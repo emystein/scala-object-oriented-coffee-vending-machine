@@ -13,7 +13,6 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
   }
 
   test("Initial state") {
-    assert(vendingMachine.credit == 0)
     assert(vendingMachine.flavor.isEmpty)
     assert(vendingMachine.sugarLevel == 0)
     assert(vendingMachine.temperature.isInstanceOf[NormalTemperature])
@@ -51,7 +50,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
 
     val result = vendingMachine.addMoney(teaPrice * 2).asInstanceOf[CupAndChange]
 
-    assert(vendingMachine.credit == 0)
+    assert(vendingMachine.register.credit == 0)
   }
 
   test("Add money less than price should inform pending amount") {

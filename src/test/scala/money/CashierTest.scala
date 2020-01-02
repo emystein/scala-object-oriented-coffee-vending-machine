@@ -37,6 +37,5 @@ class CashierTest extends FunSuite with BeforeAndAfterEach {
     cashier.addCredit(chocolatePrice + 0.1)
 
     assert(cashier.charge(DrinkOrder("Chocolate")) == BigDecimal(0.1))
-    assert(cashRegister.change == BigDecimal(0.1))
   }
 }

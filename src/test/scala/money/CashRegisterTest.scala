@@ -19,7 +19,6 @@ class CashRegisterTest extends FunSuite {
     val change = cashRegister.charge(8)
 
     assert(change == 2)
-    assert(cashRegister.change == BigDecimal(2))
   }
 
   test("Given a Cash Register with $10 in credit when charge $8 then the Cash Register should reset credit") {

@@ -10,7 +10,7 @@ object DrinkMixer {
 
 class DrinkMixer(flavor: String) {
   var sugar: Int = 0
-  var temperature: Temperature = NormalTemperature()
+  var temperature: Temperature = NormalTemperature
 
   def sugarCount(count: Int): DrinkMixer = {
     sugar = count

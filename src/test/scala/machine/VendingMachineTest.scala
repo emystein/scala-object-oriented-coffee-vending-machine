@@ -16,7 +16,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
   test("Initial state") {
     assert(vendingMachine.flavor.isEmpty)
     assert(vendingMachine.sugarLevel == 0)
-    assert(vendingMachine.temperature.isInstanceOf[NormalTemperature])
+    assert(vendingMachine.temperature == NormalTemperature)
   }
 
   test("Add money for the exact price should prepare drink") {

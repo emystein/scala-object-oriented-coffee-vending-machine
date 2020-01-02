@@ -33,8 +33,8 @@ class DrinkMakerTest extends FunSuite {
   }
 
   test("Make extra hot drink ") {
-    val cup = drinkMaker.prepare(DrinkOrder("Chocolate", 1, ExtraHotTemperature()))
+    val cup = drinkMaker.prepare(DrinkOrder("Chocolate", 1, ExtraHotTemperature))
 
-    assert(cup.drink.temperature.isInstanceOf[ExtraHotTemperature])
+    assert(cup.drink.temperature == ExtraHotTemperature)
   }
 }

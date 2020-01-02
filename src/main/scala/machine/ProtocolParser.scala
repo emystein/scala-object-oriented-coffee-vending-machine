@@ -21,8 +21,8 @@ class ProtocolParser() {
     val extraHotPattern = "(.h)".r
 
     command match {
-      case extraHotPattern(_) => ExtraHotTemperature()
-      case _ => NormalTemperature()
+      case extraHotPattern(_) => ExtraHotTemperature
+      case _ => NormalTemperature
     }
   }
 }

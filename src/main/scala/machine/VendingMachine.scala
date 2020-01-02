@@ -10,7 +10,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
   var flavor: String = ""
   var sugarLevel: Int = 0
-  var temperature: Temperature = NormalTemperature()
+  var temperature: Temperature = NormalTemperature
 
   def addMoney(money: Double): PreparationResult = {
     Preconditions.checkState(!flavor.isEmpty)

@@ -2,6 +2,8 @@ package money
 
 import machine.DrinkOrder
 
+import scala.math.BigDecimal.RoundingMode
+
 case class Cashier(cashRegister: CashRegister) {
   def addCredit(value: Double): Unit = {
     cashRegister.addCredit(value)
@@ -11,7 +13,7 @@ case class Cashier(cashRegister: CashRegister) {
     val ticket = Ticket(order)
 
     if (cashRegister.credit < ticket.total)
-      throw AmountNotSufficientException(cashRegister.credit)
+      throw AmountNotSufficientException(BigDecimal(ticket.total - cashRegister.credit).setScale(1, RoundingMode.UP))
 
     val change = cashRegister.charge(ticket.total)
 

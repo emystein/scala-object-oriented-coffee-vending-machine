@@ -24,7 +24,7 @@ class CashierTest extends FunSuite with BeforeAndAfterEach {
     cashier.addCredit(chocolatePrice - 0.1)
 
     the[AmountNotSufficientException] thrownBy
-      cashier.charge(DrinkOrder("Chocolate")) should have message "Amount not sufficient: 0.4"
+      cashier.charge(DrinkOrder("Chocolate")) should have message "Amount not sufficient. Remaining: 0.1"
   }
 
   test("Charge more amount for Drink should return change") {

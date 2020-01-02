@@ -1,3 +1,3 @@
 package machine
 
-case class RemainingAmount(remainingAmount: Double) extends PreparationResult
+case class RemainingAmount(remainingAmount: BigDecimal) extends PreparationResult

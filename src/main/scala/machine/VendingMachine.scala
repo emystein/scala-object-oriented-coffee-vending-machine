@@ -1,7 +1,7 @@
 package machine
 
 import com.google.common.base.Preconditions
-import money.{AmountNotSufficientException, CashRegister, Cashier, DrinkPriceList}
+import money.{AmountNotSufficientException, CashRegister, Cashier}
 
 class VendingMachine(drinkMaker: DrinkMaker) {
   var cashRegister = new CashRegister
@@ -22,7 +22,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
       val cup = drinkMaker.prepare(order)
       CupAndChange(Some(cup), change)
     } catch {
-      case AmountNotSufficientException(amountGiven) => RemainingAmount(DrinkPriceList.priceOf(flavor) - amountGiven)
+      case AmountNotSufficientException(amountRemaining) => RemainingAmount(amountRemaining)
     }
   }
 }

@@ -10,32 +10,32 @@ class CashierTest extends FunSuite with BeforeAndAfterEach {
 
   override protected def beforeEach(): Unit = {
     cashRegister = new CashRegister
-    cashier = new Cashier(cashRegister)
+    cashier = Cashier(cashRegister)
   }
 
   test("Charge exact amount for Drink should return 0 change") {
     cashier.addCredit(chocolatePrice)
 
-    assert(cashier.charge("Chocolate", chocolatePrice) == BigDecimal(0))
+    assert(cashier.charge("Chocolate") == BigDecimal(0))
   }
 
   test("Reject to make drink when incorrect amount is deposited") {
     cashier.addCredit(chocolatePrice - 0.1)
 
     the[AmountNotSufficientException] thrownBy
-      cashier.charge("Chocolate", chocolatePrice - 0.1) should have message "Amount not sufficient: 0.4"
+      cashier.charge("Chocolate") should have message "Amount not sufficient: 0.4"
   }
 
   test("Charge more amount for Drink should return change") {
     cashier.addCredit(chocolatePrice + 0.1)
 
-    assert(cashier.charge("Chocolate", chocolatePrice + 0.1) == BigDecimal(0.1))
+    assert(cashier.charge("Chocolate") == BigDecimal(0.1))
   }
 
   test("Charge more amount for Drink should set CashRegister change") {
     cashier.addCredit(chocolatePrice + 0.1)
 
-    assert(cashier.charge("Chocolate", chocolatePrice + 0.1) == BigDecimal(0.1))
+    assert(cashier.charge("Chocolate") == BigDecimal(0.1))
     assert(cashRegister.change == BigDecimal(0.1))
   }
 }

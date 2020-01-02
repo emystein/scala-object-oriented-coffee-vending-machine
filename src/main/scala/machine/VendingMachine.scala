@@ -4,8 +4,7 @@ import com.google.common.base.Preconditions
 import money.{AmountNotSufficientException, CashRegister, Cashier, DrinkPriceList}
 
 class VendingMachine(drinkMaker: DrinkMaker) {
-  var register = new CashRegister
-  var cashier = new Cashier(register)
+  var cashier = Cashier(new CashRegister)
 
   var flavor: String = ""
   var sugarLevel: Int = 0
@@ -17,7 +16,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
     cashier.addCredit(money)
 
     try {
-      val change = cashier.charge(flavor, register.credit)
+      val change = cashier.charge(flavor)
       val cup = drinkMaker.prepare(DrinkOrder(flavor, sugarLevel))
       CupAndChange(Some(cup), change)
     } catch {

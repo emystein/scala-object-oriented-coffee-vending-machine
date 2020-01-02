@@ -1,6 +1,6 @@
 package machine.preparation.preconditions
 
-import machine.EmailNotifier
+import machine.administration.EmailNotifier
 
 class FlavorQuantityPrecondition(flavorQuantityChecker: FlavorQuantityChecker, emailNotifier: EmailNotifier)
   extends DrinkMakePrecondition {

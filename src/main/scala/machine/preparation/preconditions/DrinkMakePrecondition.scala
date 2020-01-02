@@ -1,5 +1,5 @@
 package machine.preparation.preconditions
 
 trait DrinkMakePrecondition {
-  def apply(flavor: String): Unit
+  def apply(flavor: String)
 }

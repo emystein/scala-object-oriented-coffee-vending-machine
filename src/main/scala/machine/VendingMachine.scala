@@ -16,8 +16,9 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
     cashier.addCredit(money)
 
+    val order = DrinkOrder(flavor, sugarLevel)
+
     try {
-      val order = DrinkOrder(flavor, sugarLevel)
       val change = cashier.charge(order)
       val cup = drinkMaker.prepare(order)
       CupAndChange(cup, change)

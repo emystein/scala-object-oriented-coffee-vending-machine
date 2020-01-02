@@ -1,3 +1,3 @@
 package machine
 
-trait PreparationResult
+abstract class PreparationResult extends Product with Serializable

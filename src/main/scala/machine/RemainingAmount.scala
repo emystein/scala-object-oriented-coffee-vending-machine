@@ -1,3 +1,5 @@
 package machine
 
-case class RemainingAmount(remainingAmount: BigDecimal) extends PreparationResult
+case class RemainingAmount(remaining: BigDecimal) extends PreparationResult {
+  def ==(other: Double): Boolean = remaining == other
+}

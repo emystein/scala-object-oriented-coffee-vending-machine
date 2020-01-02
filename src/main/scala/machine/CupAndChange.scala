@@ -1,3 +1,3 @@
 package machine
 
-case class CupAndChange(cup: Option[Cup], change: BigDecimal) extends PreparationResult
+case class CupAndChange(cup: Cup, change: BigDecimal) extends PreparationResult

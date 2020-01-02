@@ -20,7 +20,7 @@ class VendingMachine(drinkMaker: DrinkMaker) {
       val order = DrinkOrder(flavor, sugarLevel)
       val change = cashier.charge(order)
       val cup = drinkMaker.prepare(order)
-      CupAndChange(Some(cup), change)
+      CupAndChange(cup, change)
     } catch {
       case AmountNotSufficientException(amountRemaining) => RemainingAmount(amountRemaining)
     }

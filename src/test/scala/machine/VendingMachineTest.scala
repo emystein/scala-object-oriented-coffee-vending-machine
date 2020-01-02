@@ -23,7 +23,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
 
     val result = vendingMachine.addMoney(teaPrice).asInstanceOf[CupAndChange]
 
-    assert(result.cup.get.drink.flavor == "Tea")
+    assert(result.cup.drink.flavor == "Tea")
   }
 
   test("Add money up to exact price should prepare drink") {
@@ -33,7 +33,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
     assert(pendingAmountResult.remainingAmount == teaPrice / 2)
 
     val result = vendingMachine.addMoney(teaPrice / 2).asInstanceOf[CupAndChange]
-    assert(result.cup.get.drink.flavor == "Tea")
+    assert(result.cup.drink.flavor == "Tea")
   }
 
   test("Add money more than price should prepare drink and return change") {
@@ -41,7 +41,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
 
     val result = vendingMachine.addMoney(teaPrice * 2).asInstanceOf[CupAndChange]
 
-    assert(result.cup.get.drink.flavor == "Tea")
+    assert(result.cup.drink.flavor == "Tea")
     assert(result.change == teaPrice)
   }
 

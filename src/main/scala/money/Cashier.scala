@@ -8,12 +8,12 @@ case class Cashier(cashRegister: CashRegister) {
   }
 
   def charge(order: DrinkOrder): BigDecimal = {
-    val listPrice = DrinkPriceList.priceOf(order.flavor)
+    val ticket = Ticket(order)
 
-    if (cashRegister.credit < listPrice)
+    if (cashRegister.credit < ticket.total)
       throw AmountNotSufficientException(cashRegister.credit)
 
-    val change = cashRegister.charge(listPrice)
+    val change = cashRegister.charge(ticket.total)
 
     change
   }

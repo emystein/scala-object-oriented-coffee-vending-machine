@@ -50,7 +50,7 @@ class VendingMachineTest extends FunSuite with BeforeAndAfterEach {
 
     val result = vendingMachine.addMoney(teaPrice * 2).asInstanceOf[CupAndChange]
 
-    assert(vendingMachine.cashier.cashRegister.credit == 0)
+    assert(vendingMachine.cashRegister.credit == 0)
   }
 
   test("Add money less than price should inform pending amount") {

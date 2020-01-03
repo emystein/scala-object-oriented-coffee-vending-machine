@@ -19,11 +19,13 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
     drinkSelection match {
       case None => DrinkNotSelected()
-      case Some(selection) => prepare(selection.buildDrinkOrder)
+      case Some(selection) => prepare(selection)
     }
   }
 
-  private def prepare(order: DrinkOrder) = {
+  private def prepare(selection: DrinkSelection) = {
+    val order = selection.buildDrinkOrder
+
     cashier.charge(order) match {
       case Change(change) => CupAndChange(drinkMaker.prepare(order), change)
       case AmountNotSufficient(remaining) => RemainingAmount(remaining)

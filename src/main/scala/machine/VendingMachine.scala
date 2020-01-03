@@ -1,8 +1,8 @@
 package machine
 
 import com.google.common.base.Preconditions
-import machine.preparation.{CupAndChange, DrinkMaker, NormalTemperature, PreparationResult, RemainingAmount, Temperature}
-import money.{AmountNotSufficientException, CashRegister, Cashier}
+import machine.preparation._
+import money.{AmountNotSufficient, CashRegister, Cashier, Change}
 
 class VendingMachine(drinkMaker: DrinkMaker) {
   var cashRegister = new CashRegister
@@ -19,12 +19,9 @@ class VendingMachine(drinkMaker: DrinkMaker) {
 
     val order = DrinkOrder(flavor, sugarLevel, temperature)
 
-    try {
-      val change = cashier.charge(order)
-      val cup = drinkMaker.prepare(order)
-      CupAndChange(cup, change)
-    } catch {
-      case AmountNotSufficientException(amountRemaining) => RemainingAmount(amountRemaining)
+    cashier.charge(order) match {
+      case Change(change) => CupAndChange(drinkMaker.prepare(order), change)
+      case AmountNotSufficient(remaining) => RemainingAmount(remaining)
     }
   }
 }
